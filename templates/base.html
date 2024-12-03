@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Premier Transport {% endblock %}</title>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E9F1E3; /* Light Green */
+            color: #556B2F; /* Dark Olive Green */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+    
+        header {
+            background-color: #6B8E23; /* Olive Green */
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+    
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+    
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+    
+        header nav a:hover {
+            text-decoration: underline;
+        }
+    
+        h2, h3 {
+            color: #556B2F; /* Dark Olive Green */
+        }
+    
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background-color: #6B8E23; /* Olive Green */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    
+        .btn:hover {
+            background-color: #556B2F; /* Dark Olive Green */
+        }
+    
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+    
+        th, td {
+            padding: 10px;
+            border: 1px solid #A9DFBF; /* Light Green */
+            text-align: left;
+        }
+    
+        th {
+            background-color: #6B8E23; /* Olive Green */
+            color: white;
+        }
+    
+        td {
+            background-color: #E9F1E3; /* Light Green */
+        }
+    
+        /* Form Styles */
+        form {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #E9F1E3; /* Light Green */
+            border: 1px solid #A9DFBF; /* Light Green */
+            border-radius: 5px;
+        }
+    
+        form input, form select, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #A9DFBF; /* Light Green */
+            border-radius: 5px;
+        }
+    
+        form button {
+            background-color: #6B8E23; /* Olive Green */
+            color: white;
+            font-weight: bold;
+        }
+    
+        form button:hover {
+            background-color: #556B2F; /* Dark Olive Green */
+        }
+    
+        /* Links */
+        a {
+            color: #6B8E23; /* Olive Green */
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Premier Transport</h1>
+    <h4>your journey our responsibility ! 🌞</h4>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
